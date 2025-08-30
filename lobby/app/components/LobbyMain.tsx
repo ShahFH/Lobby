@@ -6,17 +6,16 @@ import { SectionDivider } from "./lobbypages/SectionDivider"
 import ChatInterface from "./lobbypages/chat-interface"
 import { SponsorSection } from "./lobbypages/SponsorSection"
 
-
 export const LobbyMain = () => {
   return (
     <div className="relative min-h-screen w-full overflow-hidden">
       {/* Background Image */}
       <Image
-        src="/bg.webp" // put your image in /public/images
+        src="/bg.webp" 
         alt="Background"
         fill
-        className="object-cover object-center"
-        priority // preloads image for faster display
+        className="object-cover object-top"
+        priority 
       />
 
       {/* Main content container */}

@@ -52,7 +52,7 @@ body {
 
 /* Added btn-secondary class with glassmorphism effect */
 .btn-secondary {
-  background-color: rgba(206, 215, 255, 0.07);
+  background-color: #CED7FF/10;
   backdrop-filter: blur(1px);
   box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.02), inset 0px 1px 0px 0px rgba(255, 255, 255, 0.18);
   padding: 10px 14px;
@@ -89,6 +89,20 @@ body {
 .btn-accent-cyan:hover {
   background-color: rgba(16, 249, 254, 0.08);
   box-shadow: inset 0px 0px 25px 0px rgba(16, 249, 254, 0.3), 0px 0px 25px 0px rgba(16, 249, 254, 0.3);
+}
+
+/* Accent - Violet (#7852FF) */
+.btn-accent-violet:hover {
+  box-shadow: inset 0px 0px 25px rgba(120, 82, 255, 0.4),
+              0px 0px 25px rgba(120, 82, 255, 0.6);
+  background-color: rgba(120, 82, 255, 0.1);
+}
+
+/* Accent - Pink (#FF52E8) */
+.btn-accent-pink2:hover {
+  box-shadow: inset 0px 0px 25px rgba(255, 82, 232, 0.4),
+              0px 0px 25px rgba(255, 82, 232, 0.6);
+  background-color: rgba(255, 82, 232, 0.1);
 }
 
 /* Cut corner utility classes */

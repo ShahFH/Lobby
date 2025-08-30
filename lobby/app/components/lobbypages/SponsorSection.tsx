@@ -1,8 +1,9 @@
 "use client"
-
+import SVGBackground from './svg-background'
 import "../../globals.css"
 import { ChevronLeft, Copy, Settings } from "lucide-react";
 import DavidsPicks from './davids-picks'
+import { motion } from "framer-motion"
 
 const playersData = [
   {
@@ -56,6 +57,13 @@ const vsImages = [
   "https://c.animaapp.com/2s7BMdxA/img/vs-3.svg",
 ]
 
+const playSound = (file: string) => {
+  const audio = new Audio(file);
+  audio.currentTime = 0; // restart if spam-click
+  audio.play();
+};
+
+
 const PlayerAvatar = ({ player }) => {
   const hexagonClip = "polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)"
 
@@ -92,7 +100,9 @@ const PlayerAvatar = ({ player }) => {
 // Manual button components for each player
 const DavidButton = () => {
   return (
-    <div className="btn-accent-pink2 btn text-white">
+    <div 
+    onClick={() => playSound("/audio/david.wav")}
+    className="btn-accent-pink2 btn text-white cursor-pointer">
       Place a bet
     </div>
   )
@@ -100,7 +110,9 @@ const DavidButton = () => {
 
 const Player2Button = () => {
   return (
-    <div className=" text-white btn btn-accent-violet ">
+    <div 
+    onClick={() => playSound("/audio/pl2.wav")}
+    className=" text-white btn btn-accent-violet cursor-pointer">
       Place a bet
     </div>
   )
@@ -108,9 +120,13 @@ const Player2Button = () => {
 
 const InactivePlayerButton = () => {
   return (
-    <div className="inline-flex items-center btn btn-primary text-white justify-center gap-[var(--3-spacing-spacing-xs)] pt-[var(--3-spacing-spacing-md)] pr-[var(--3-spacing-spacing-lg)] pb-[var(--3-spacing-spacing-md)] pl-[var(--3-spacing-spacing-lg)] rounded-[var(--2-radius-radius-lg)] overflow-hidden shadow-[inset_0px_1px_0px_#ffffff63,inset_0px_-2px_0px_#00000038] bg-[linear-gradient(0deg,rgba(255,255,255,0)_0%,rgba(255,255,255,0.2)_100%),linear-gradient(0deg,rgba(120,82,255,1)_0%,rgba(120,82,255,1)_100%)]">
+    <motion.div className="inline-flex items-center cursor-pointer btn btn-primary text-white justify-center gap-[var(--3-spacing-spacing-xs)] pt-[var(--3-spacing-spacing-md)] pr-[var(--3-spacing-spacing-lg)] pb-[var(--3-spacing-spacing-md)] pl-[var(--3-spacing-spacing-lg)] rounded-[var(--2-radius-radius-lg)] overflow-hidden shadow-[inset_0px_1px_0px_#ffffff63,inset_0px_-2px_0px_#00000038] bg-[linear-gradient(0deg,rgba(255,255,255,0)_0%,rgba(255,255,255,0.2)_100%),linear-gradient(0deg,rgba(120,82,255,1)_0%,rgba(120,82,255,1)_100%)]"
+    whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(120, 82, 255, 0.5)" }}
+    whileTap={{ scale: 0.95 }}
+    onClick={() => playSound("/audio/player.wav")}
+    >
       Join 100$
-    </div>
+    </motion.div>
   )
 }
 
@@ -132,7 +148,7 @@ export const SponsorSection = () => {
       <div className="w-full px-4 sm:px-6 py-4 flex bg-[#CED7FF]/10 items-center justify-between sm:justify-evenly cut-corners-all">
       {/* Back Button - Only arrow on mobile */}
       <button className="btn btn-secondary flex items-center gap-2 text-white hover:text-gray-300 transition-colors">
-        <ChevronLeft className="w-5 h-5" />
+        <ChevronLeft className="w-5 h-5 text-[#757995]" />
         <span className="font-medium hidden sm:inline">Back</span>
       </button>
 
@@ -178,9 +194,12 @@ export const SponsorSection = () => {
     </div>
 
       {/* Players Section */}
-      <div className="w-full mx-auto border-2 border-[#CED7FF]/10 p-2 rounded-2xl">
-        <div className=" bg-[#CED7FF]/10 p-1.5 rounded-2xl">
-        <div className="relative w-full bg-[url(https://c.animaapp.com/2s7BMdxA/img/bg.png)] bg-cover bg-center rounded-lg p-4 overflow-hidden">
+      <div className="w-full mx-auto ">
+        <div className="relative w-full rounded-lg overflow-hidden">
+          <div className="absolute inset-0 w-full h-full">
+            <SVGBackground className="w-full h-full" preserveAspectRatio="none" />
+          </div>
+
           <div
             className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"
             style={{
@@ -192,71 +211,70 @@ export const SponsorSection = () => {
               filter: "blur(75.7326px)",
             }}
           />
-          
-          <div className="relative flex flex-col md:grid md:grid-cols-3 lg:grid-cols-5 lg:gap-0">
-            {playersData.map((player, index) => (
-              <div key={player.id} className="relative">
-                <div className="flex md:flex-col lg:flex-col items-center md:justify-center lg:justify-center gap-4 md:gap-[18px] lg:gap-[18px] py-4 md:py-8 lg:py-16 px-4">
-                  {/* Avatar */}
-                  <div className="relative w-[60px] h-[60px] md:w-[70px] md:h-[70px] lg:w-[82px] lg:h-[82px] flex-shrink-0">
-                    <PlayerAvatar player={player} />
-                  </div>
 
-                  {/* Name and Status */}
-                  <div className="flex flex-col md:items-center lg:items-center gap-1 flex-grow md:flex-grow-0 lg:flex-grow-0">
-                    <div className="[font-family:'Bai_Jamjuree',Helvetica] font-bold text-white text-sm md:text-sm lg:text-base tracking-[0] leading-6 lg:leading-7 whitespace-nowrap">
-                      {player.name}
+          <div className="relative z-10 p-4">
+            <div className="flex flex-col md:grid md:grid-cols-3 lg:grid-cols-5 lg:gap-0">
+              {playersData.map((player, index) => (
+                <div key={player.id} className="relative">
+                  <div className="flex md:flex-col lg:flex-col items-center md:justify-center lg:justify-center gap-4 md:gap-[18px] lg:gap-[18px] py-4 md:py-8 lg:py-16 px-4">
+                    {/* Avatar */}
+                    <div className="relative w-[60px] h-[60px] md:w-[70px] md:h-[70px] lg:w-[82px] lg:h-[82px] flex-shrink-0">
+                      <PlayerAvatar player={player} />
                     </div>
-                    <div className="[font-family:'Bai_Jamjuree',Helvetica] font-medium text-gray-400 text-xs tracking-[0] leading-[18px] whitespace-nowrap">
-                      {player.status}
+
+                    {/* Name and Status */}
+                    <div className="flex flex-col md:items-center lg:items-center gap-1 flex-grow md:flex-grow-0 lg:flex-grow-0">
+                      <div className="[font-family:'Bai_Jamjuree',Helvetica] font-bold text-white text-sm md:text-sm lg:text-base tracking-[0] leading-6 lg:leading-7 whitespace-nowrap">
+                        {player.name}
+                      </div>
+                      <div className="[font-family:'Bai_Jamjuree',Helvetica] font-medium text-gray-400 text-xs tracking-[0] leading-[18px] whitespace-nowrap">
+                        {player.status}
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Button */}
-                  <div className="flex-shrink-0 ">
-                    {getPlayerButton(player)}
-                  </div>
+                    {/* Button */}
+                    <div className="flex-shrink-0">{getPlayerButton(player)}</div>
 
-                  {/* Sponsor Badge */}
-                  {player.isSponsor && (
-                    <div className="absolute -top-2 left-4 md:top-2 md:left-1/2 md:transform md:-translate-x-1/2 lg:top-4 lg:left-1/2 lg:transform lg:-translate-x-1/2">
-                      <div className="inline-flex items-center justify-center gap-2.5 px-2 py-1 bg-1-color-colors-background-bg-brand-secondary rounded">
-                        <div className="font-text-xs-semibold font-[number:var(--text-xs-semibold-font-weight)] text-[color:var(--1-color-colors-foreground-fg-brand)] text-[length:var(--text-xs-semibold-font-size)] tracking-[var(--text-xs-semibold-letter-spacing)] leading-[var(--text-xs-semibold-line-height)] whitespace-nowrap [font-style:var(--text-xs-semibold-font-style)]">
+                    {/* Sponsor Badge */}
+                    {player.isSponsor && (
+                      <div className="absolute -top-2 left-4 md:top-2 md:left-1/2 md:transform md:-translate-x-1/2 lg:top-4 lg:left-1/2 lg:transform lg:-translate-x-1/2">
+                        <div className="inline-flex items-center justify-center gap-2.5 px-2 py-1 bg-1-color-colors-background-bg-brand-secondary rounded">
+                          <div className="font-text-xs-semibold font-[number:var(--text-xs-semibold-font-weight)] text-[color:var(--1-color-colors-foreground-fg-brand)] text-[length:var(--text-xs-semibold-font-size)] tracking-[var(--text-xs-semibold-letter-spacing)] leading-[var(--text-xs-semibold-line-height)] whitespace-nowrap [font-style:var(--text-xs-semibold-font-style)]">
                             SPONSOR
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    )}
+                  </div>
+
+                  {/* VS Dividers */}
+                  {index < playersData.length - 1 && (
+                    <>
+                      {/* Desktop dividers */}
+                      <div className="hidden lg:block absolute top-0 right-0 w-px h-full bg-[#ced7ff0d]" />
+                      <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-10">
+                        <img className="w-[31px] h-[31px]" alt="VS" src={vsImages[index] || "/placeholder.svg"} />
+                      </div>
+
+                      {/* Tablet dividers */}
+                      <div className="hidden md:block lg:hidden absolute top-0 right-0 w-px h-full bg-[#ced7ff0d]" />
+                      <div className="hidden md:block lg:hidden absolute top-1/2 -right-2 transform -translate-y-1/2 z-10">
+                        <img className="w-[25px] h-[25px]" alt="VS" src={vsImages[index] || "/placeholder.svg"} />
+                      </div>
+
+                      {/* Mobile dividers */}
+                      <div className="md:hidden relative w-full h-px bg-[#ced7ff0d] mx-4">
+                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-2 rounded-full">
+                          <img className="w-[31px] h-[31px]" alt="VS" src={vsImages[index] || "/placeholder.svg"} />
+                        </div>
+                      </div>
+                    </>
                   )}
                 </div>
-
-                {/* VS Dividers */}
-                {index < playersData.length - 1 && (
-                  <>
-                    {/* Desktop dividers */}
-                    <div className="hidden lg:block absolute top-0 right-0 w-px h-full bg-[#ced7ff0d]" />
-                    <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-10">
-                      <img className="w-[31px] h-[31px]" alt="VS" src={vsImages[index]} />
-                    </div>
-
-                    {/* Tablet dividers */}
-                    <div className="hidden md:block lg:hidden absolute top-0 right-0 w-px h-full bg-[#ced7ff0d]" />
-                    <div className="hidden md:block lg:hidden absolute top-1/2 -right-2 transform -translate-y-1/2 z-10">
-                      <img className="w-[25px] h-[25px]" alt="VS" src={vsImages[index]} />
-                    </div>
-
-                    {/* Mobile dividers */}
-                    <div className="md:hidden relative w-full h-px bg-[#ced7ff0d] mx-4">
-                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[url(https://c.animaapp.com/2s7BMdxA/img/bg.png)] px-2 rounded-full">
-                        <img className="w-[31px] h-[31px]" alt="VS" src={vsImages[index]} />
-                      </div>
-                    </div>
-                  </>
-                )}
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-        </div>
+          </div>
       </div>
       <DavidsPicks />
 
