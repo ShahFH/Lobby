@@ -23,9 +23,9 @@ export const Header = (): JSX.Element => {
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
         {/* Logo */}
-        <motion.div whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }}>
+        <div >
           <h1 className="text-2xl font-bold text-white tracking-tight hidden md:block">DASH MARKETS</h1>
-        </motion.div>
+        </div>
 
         {/* Desktop Right side controls */}
         <div className="hidden min-[780px]:flex items-center justify-center gap-4">

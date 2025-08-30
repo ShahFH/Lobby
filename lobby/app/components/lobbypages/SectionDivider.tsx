@@ -8,7 +8,7 @@ interface SectionDividerProps {
 
 export function SectionDivider({ text, className }: SectionDividerProps) {
   return (
-    <div className="flex items-center justify-center w-full gap-[44px]">
+    <div className=" relative flex items-center justify-center w-full gap-[44px] -top-6">
       {/* Left line - only visible on larger screens and limited to 428px */}
       <div className="w-full max-w-[200px] sm:max-w-[300px] md:max-w-[428px] h-6 relative overflow-hidden">
         <svg
@@ -28,7 +28,7 @@ export function SectionDivider({ text, className }: SectionDividerProps) {
 
       {/* Centered text */}
       <div className=" flex gap-[34px]">
-        <h2 className="text-[14px] uppercase font-bold text-center tracking-wider whitespace-nowrap">
+        <h2 className="text-[14px] uppercase font-bold text-center text-white tracking-wider whitespace-nowrap">
           Waiting Room
         </h2>
         <h2 className="text-[14px] uppercase font-bold text-[#606481] text-center tracking-wider whitespace-nowrap">

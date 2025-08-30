@@ -18,10 +18,11 @@ function PicksCard({
   ]
 
   return (
-    <div className="relative w-[192px] h-[254px]">
+    <div className="relative w-[192px] h-[254px] ">
       {/* Main card container */}
+      <div className=" border-2 border-[#CED7FF]/10 rounded-xl p-1">
       <div
-        className="w-full h-full rounded-xl flex flex-col relative z-10 overflow-hidden"
+        className="w-full h-full rounded-[10px] flex flex-col relative z-10 overflow-hidden"
         style={{
           background: backgroundColor,
         }}
@@ -87,6 +88,7 @@ function PicksCard({
           ))}
         </div>
       </div>
+      </div>
     </div>
   )
 }
@@ -111,23 +113,22 @@ function WaitingCard() {
 
 export default function DavidsPicks() {
   return (
-    <div className="flex flex-col gap-4 md:flex-row md:flex-wrap md:gap-4 md:justify-center">
+    <div className=" relative w-full flex flex-col gap-4 md:flex-row md:flex-wrap md:gap-4 justify-evenly">
       {/* Player cards - side by side on all screen sizes */}
       <div className="flex flex-row gap-4 justify-center md:contents">
         <PicksCard playerName="DAVID" color="#FF52E8" backgroundColor="rgba(255, 82, 232, 0.08)" />
         <PicksCard playerName="PLAYER 2" color="#7852FF" backgroundColor="rgba(120, 82, 255, 0.08)" />
       </div>
 
-      <div className="flex flex-col gap-4 w-full md:contents">
-        <div className="w-full md:w-[180px]">
+      <div className=" flex flex-col gap-2 md:gap-4 w-full md:contents">
+        
           <WaitingCard />
-        </div>
-        <div className="w-full md:w-[180px]">
+        
+        
           <WaitingCard />
-        </div>
-        <div className="w-full md:w-[180px]">
+        
           <WaitingCard />
-        </div>
+        
       </div>
     </div>
   )
