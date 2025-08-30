@@ -98,7 +98,7 @@ function WaitingCard() {
     <div className="relative w-full h-[60px] md:w-[192px] md:h-[254px] ">
       {/* Main card container */}
       <div
-        className="w-full h-full rounded-xl flex flex-col items-center justify-center relative z-10 overflow-hidden bg-[#CED7FF]/10"
+        className="w-full h-full rounded-xl flex flex-col items-center justify-center relative z-10 overflow-hidden bg-[#CED7FF]/5"
       >
         <span
           className="text-[#9C9EB3] font-semibold text-xs leading-[18px] text-center"

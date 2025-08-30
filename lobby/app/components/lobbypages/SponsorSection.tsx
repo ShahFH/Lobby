@@ -30,7 +30,7 @@ const playersData = [
     status: "WAITING FOR PLAYER",
     isActive: false,
     isSponsor: false,
-    avatarImg: "https://c.animaapp.com/2s7BMdxA/img/polygon-1.svg",
+    avatarImg: "/PolygonShap.png",
   },
   {
     id: 4,
@@ -38,7 +38,7 @@ const playersData = [
     status: "WAITING FOR PLAYER",
     isActive: false,
     isSponsor: false,
-    avatarImg: "https://c.animaapp.com/2s7BMdxA/img/polygon-1-1.svg",
+    avatarImg: "/PolygonShap.png",
   },
   {
     id: 5,
@@ -46,7 +46,7 @@ const playersData = [
     status: "WAITING FOR PLAYER",
     isActive: false,
     isSponsor: false,
-    avatarImg: "https://c.animaapp.com/2s7BMdxA/img/polygon-1-2.svg",
+    avatarImg: "/PolygonShap.png",
   },
 ]
 
@@ -65,7 +65,6 @@ const playSound = (file: string) => {
 
 
 const PlayerAvatar = ({ player }) => {
-  const hexagonClip = "polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)"
 
   if (player.avatarBg) {
     return (
@@ -74,12 +73,10 @@ const PlayerAvatar = ({ player }) => {
         style={{
           backgroundImage: `url(${player.avatarBg})`,
           backgroundSize: "100% 100%",
-          clipPath: hexagonClip,
         }}
       >
         <img
           className="absolute w-[42px] h-[46px] md:w-[50px] md:h-[54px] lg:w-[57px] lg:h-[62px] top-1.5 md:top-1.5 lg:top-2 left-[5px] md:left-[6px] lg:left-[7px] object-cover"
-          style={{ clipPath: hexagonClip }}
           alt="Player Avatar"
           src={player.avatarImg}
         />
@@ -90,7 +87,6 @@ const PlayerAvatar = ({ player }) => {
   return (
     <img
       className="relative w-[58px] h-[63px] md:w-[67px] md:h-[73px] lg:w-[77.08px] lg:h-[84.05px] z-10"
-      style={{ clipPath: hexagonClip }}
       alt="Player Avatar"
       src={player.avatarImg}
     />
@@ -145,7 +141,7 @@ export const SponsorSection = () => {
   return (
     <section className=" w-full flex flex-col px-1 md:px-[36px] py-4 gap-4">
       {/* Header */}
-      <div className="w-full px-4 sm:px-6 py-4 flex bg-[#CED7FF]/10 items-center justify-between sm:justify-evenly cut-corners-all">
+      <div className="w-full px-4 sm:px-6 py-4 flex bg-[#CED7FF]/7 items-center justify-between sm:justify-evenly cut-corners-all">
       {/* Back Button - Only arrow on mobile */}
       <button className="btn btn-secondary flex items-center gap-2 text-white hover:text-gray-300 transition-colors">
         <ChevronLeft className="w-5 h-5 text-[#757995]" />
@@ -157,8 +153,8 @@ export const SponsorSection = () => {
       
       {/* Game ID - Hidden on mobile */}
       <div className="flex flex-col items-start hidden sm:flex">
-        <div className="text-gray-400 text-sm">Game Id:</div>
-        <div className="text-white font-semibold">#G1A2B3</div>
+        <div className="text-gray-400 text-[12px] font-semibold">Game Id:</div>
+        <div className="text-white font-semibold text-[18px]">#G1A2B3</div>
       </div>
 
       {/* Divider - Hidden on mobile */}
@@ -167,7 +163,7 @@ export const SponsorSection = () => {
       {/* Waiting Timer - Always visible, centered on mobile */}
       <div className="flex flex-col items-center text-center flex-1 sm:flex-initial">
         <div className="text-purple-400 font-bold text-sm tracking-wider">WAITING</div>
-        <div className="text-white text-xl font-bold">1m 34s</div>
+        <div className="text-white text-xl font-bold text-[22px]">1m 34s</div>
       </div>
 
       {/* Divider - Hidden on mobile */}
@@ -175,8 +171,8 @@ export const SponsorSection = () => {
 
       {/* Stake - Hidden on mobile */}
       <div className="flex flex-col items-end text-center hidden sm:flex">
-        <div className="text-gray-400 text-sm">Stake:</div>
-        <div className="text-white font-semibold">100$</div>
+        <div className="text-gray-400 font-semibold text-[12px]">Stake:</div>
+        <div className="text-white font-semibold text-[18px]">100$</div>
       </div>
 
       {/* Divider - Hidden on mobile */}
@@ -202,14 +198,18 @@ export const SponsorSection = () => {
 
           <div
             className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-            style={{
-              width: "814px",
-              height: "245px",
-              background: "#8968FF",
-              mixBlendMode: "plus-lighter",
-              opacity: 0.08,
-              filter: "blur(75.7326px)",
-            }}
+             style={{
+          background: `
+            linear-gradient(to bottom, rgba(7, 9, 21, 0.82) 0%, transparent 24%),
+            linear-gradient(to top, rgba(7, 9, 21, 0.82) 0%, transparent 24%),
+            rgba(8, 10, 24, 0.48)
+          `,
+          border: "1px solid rgba(206, 215, 255, 0.1)",
+          boxShadow: `
+            inset 0 0 0 1px rgba(206, 215, 255, 0.1),
+            0 0 300px rgba(137, 104, 255, 0.08)
+          `,
+        }}
           />
 
           <div className="relative z-10 p-4">

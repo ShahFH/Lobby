@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Smile, ChevronsRight, ChevronRight, MessageCircle, X } from "lucide-react"
 
 const messages = [
@@ -56,6 +56,20 @@ export default function ChatInterface() {
         return "translate-x-0 w-[400px]"
     }
   }
+
+  // Auto-collapse sidebar at 1040px or less
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 1040) {
+        setSidebarState("collapsed")
+      } else {
+        setSidebarState("open")
+      }
+    }
+    window.addEventListener("resize", handleResize)
+    handleResize() // set initial state
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
 
   return (
     <div className="relative">
