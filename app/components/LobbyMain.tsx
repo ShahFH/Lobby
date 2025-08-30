@@ -22,7 +22,7 @@ export const LobbyMain = () => {
       <div className="relative z-10">
         <Header />
         <SectionDivider />
-        <div className=" relative flex flex-col md:flex-row -top-6">
+        <div className=" relative flex flex-col md:flex-row -top-3 sm:-top-6">
         <SponsorSection />
         <ChatInterface />
         </div>

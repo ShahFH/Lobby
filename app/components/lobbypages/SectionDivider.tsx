@@ -3,7 +3,7 @@ interface SectionDividerProps {
 
 export function SectionDivider({ }: SectionDividerProps) {
   return (
-    <div className="relative flex items-center justify-center w-full gap-4 sm:gap-[44px] -top-6">
+    <div className="relative flex items-center justify-center w-full gap-4 sm:gap-[44px] -top-3 sm:-top-6">
       {/* Left line - mobile version on small screens, original on larger screens */}
       <div className="w-full max-w-[94px] sm:max-w-[300px] md:max-w-[428px] h-6 relative overflow-hidden">
         {/* Mobile SVG */}
@@ -59,6 +59,7 @@ export function SectionDivider({ }: SectionDividerProps) {
           <path d="M11.9248 19.8021H15.0361L3.83691 0.404686H0.726562L11.9248 19.8021Z" fill="#7852FF"/>
           <path d="M30.4424 21.5953H949.453V20.5182H31.0645L20.3848 2.0211H19.1416L30.4424 21.5953Z" fill="#CED7FF" fillOpacity="0.1"/>
         </svg>
+        
         
         {/* Desktop SVG */}
         <svg
