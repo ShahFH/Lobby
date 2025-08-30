@@ -203,7 +203,6 @@ export const SponsorSection = () => {
 
           <div className="relative z-10 p-4">
             <div className="flex flex-col md:grid md:grid-cols-3 lg:grid-cols-5 lg:gap-0"
-            
             >
               {playersData.map((player, index) => (
                 <div key={player.id} className="relative">
