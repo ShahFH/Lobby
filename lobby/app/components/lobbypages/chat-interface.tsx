@@ -169,7 +169,7 @@ export default function ChatInterface() {
       )}
 
       <div
-        className={`hidden md:block bg-[#080A18] right-0 top-0 h-full border-l-2 border-[#CED7FF]/10 transition-all duration-300 ease-in-out z-50 ${getSidebarStyles()}`}
+        className={`hidden md:block bg-[#080A18] h-full border-l-2 border-[#CED7FF]/10 transition-all duration-300 ease-in-out z-50 ${getSidebarStyles()}`}
       >
         {/* Desktop collapsed state */}
         {sidebarState === "collapsed" && (
