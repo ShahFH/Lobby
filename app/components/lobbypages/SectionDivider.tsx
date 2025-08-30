@@ -1,12 +1,8 @@
-import Image from "next/image"
-import { cn } from "@/lib/utils"
 
 interface SectionDividerProps {
-  text: string
-  className?: string
 }
 
-export function SectionDivider({ text, className }: SectionDividerProps) {
+export function SectionDivider({ }: SectionDividerProps) {
   return (
     <div className=" relative flex items-center justify-center w-full gap-[44px] -top-6">
       {/* Left line - only visible on larger screens and limited to 428px */}
