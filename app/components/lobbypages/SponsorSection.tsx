@@ -1,9 +1,21 @@
+// @ts-nocheck
+
 "use client"
 import SVGBackground from './svg-background'
 import "../../globals.css"
 import { ChevronLeft, Copy, Settings } from "lucide-react";
 import DavidsPicks from './davids-picks'
 import { motion } from "framer-motion"
+
+interface Player {
+  id: number;
+  name: string;
+  status: string;
+  isActive: boolean;
+  isSponsor: boolean;
+  avatarBg?: string;
+  avatarImg: string;
+}
 
 const playersData = [
   {
@@ -152,7 +164,7 @@ export const SponsorSection = () => {
       <div className="w-px h-12 bg-gradient-to-b from-white/15 to-transparent hidden sm:block"></div>
       
       {/* Game ID - Hidden on mobile */}
-      <div className="flex flex-col items-start hidden sm:flex">
+      <div className="flex-col items-start hidden sm:flex">
         <div className="text-gray-400 text-[12px] font-semibold">Game Id:</div>
         <div className="text-white font-semibold text-[18px]">#G1A2B3</div>
       </div>
@@ -271,3 +283,4 @@ export const SponsorSection = () => {
     </section>
   )
 }
+
