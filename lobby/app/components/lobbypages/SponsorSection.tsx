@@ -198,22 +198,13 @@ export const SponsorSection = () => {
 
           <div
             className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-             style={{
-          background: `
-            linear-gradient(to bottom, rgba(7, 9, 21, 0.82) 0%, transparent 24%),
-            linear-gradient(to top, rgba(7, 9, 21, 0.82) 0%, transparent 24%),
-            rgba(8, 10, 24, 0.48)
-          `,
-          border: "1px solid rgba(206, 215, 255, 0.1)",
-          boxShadow: `
-            inset 0 0 0 1px rgba(206, 215, 255, 0.1),
-            0 0 300px rgba(137, 104, 255, 0.08)
-          `,
-        }}
+            
           />
 
           <div className="relative z-10 p-4">
-            <div className="flex flex-col md:grid md:grid-cols-3 lg:grid-cols-5 lg:gap-0">
+            <div className="flex flex-col md:grid md:grid-cols-3 lg:grid-cols-5 lg:gap-0"
+            
+            >
               {playersData.map((player, index) => (
                 <div key={player.id} className="relative">
                   <div className="flex md:flex-col lg:flex-col items-center md:justify-center lg:justify-center gap-4 md:gap-[18px] lg:gap-[18px] py-4 md:py-8 lg:py-16 px-4">
